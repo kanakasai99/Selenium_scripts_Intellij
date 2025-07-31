@@ -79,7 +79,7 @@ public class AutomationExcercise {
             Assert.assertEquals(msg, expectedMessage, "❌ Order confirmation message mismatch");
             System.out.println("✅ Order has been placed and TEST PASSED");
         } catch (AssertionError e) {
-            System.out.println("❌ TEST FAILED: " + e.getMessage());
+            System.out.println("TEST FAILED: " + e.getMessage());
             driver.close(); // Close the browser on failure
             throw e; // Optional: rethrow to mark test as failed in reports
         }
