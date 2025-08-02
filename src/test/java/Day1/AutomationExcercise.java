@@ -6,12 +6,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 
 import java.time.Duration;
 
 public class AutomationExcercise {
-    public static void main(String[] args) throws InterruptedException {
+/*    WebDriver driver;
+    WebDriverWait wait;
+    JavascriptExecutor js;
+
+    @BeforeMethod
+    public void setup() {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        js = (JavascriptExecutor) driver;
+    }*/
+    @Test
+    public void placeOrderTest()throws InterruptedException {
 
         // ✅ Get environment variables
         String email = System.getenv("LOGIN_EMAIL");
@@ -84,5 +98,10 @@ public class AutomationExcercise {
             throw e; // Optional: rethrow to mark test as failed in reports
         }
        driver.quit();
+        /*    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }*/
     }
 }
