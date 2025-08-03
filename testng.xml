@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="AutomationSuite" parallel="false">
-    <test name="RunCucumberTests">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ParallelSuite" parallel="tests" thread-count="2">
+    <test name="Chrome Test">
+        <parameter name="browser" value="chrome" />
         <classes>
-            <class name="runner.TestNGCucumberRunner"/>
+            <class name="runner.TestNGCucumberRunner" />
         </classes>
     </test>
-
     <test name="TestNGTests">
         <classes>
             <class name="Day1.AutomationExcercise"/>
             <class name="Day1.ReadingDataFromExcel"/>
         </classes>
     </test>
+
 </suite>
