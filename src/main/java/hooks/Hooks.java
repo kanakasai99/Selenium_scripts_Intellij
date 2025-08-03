@@ -3,11 +3,10 @@ package hooks;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import utils.ExtentManager;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import utils.DriverFactory;
+import utils.ExtentManager;
+import utils.ScreenshotUtil;
 
 public class Hooks {
 
@@ -22,15 +21,11 @@ public class Hooks {
     @After
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
-            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            ExtentManager.getTest().fail("Scenario failed: " + scenario.getName())
-                    .addScreenCaptureFromBase64String(
-                            ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64),
-                            "Failed Screenshot"
-                    );
+            ScreenshotUtil.captureScreenshotOnFailure(driver, scenario.getName());
         } else {
             ExtentManager.getTest().pass("Scenario passed");
         }
+
         DriverFactory.quitDriver();
         ExtentManager.flushReports();
     }

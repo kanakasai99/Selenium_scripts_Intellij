@@ -11,8 +11,8 @@ public class ExtentManager {
     public static ExtentReports getExtentReports() {
         if (extent == null) {
             ExtentSparkReporter reporter = new ExtentSparkReporter("test-output/ExtentReport.html");
-            reporter.config().setReportName("Barnes & Noble Automation Report");
-            reporter.config().setDocumentTitle("Test Results");
+            reporter.config().setReportName("Screenshot Test Report");
+            reporter.config().setDocumentTitle("Extent Report");
 
             extent = new ExtentReports();
             extent.attachReporter(reporter);
@@ -31,8 +31,6 @@ public class ExtentManager {
     }
 
     public static void flushReports() {
-        if (extent != null) {
-            extent.flush();
-        }
+        if (extent != null) extent.flush();
     }
 }
